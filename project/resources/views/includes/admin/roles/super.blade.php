@@ -131,6 +131,28 @@
                 </li>
         </ul>
     </li>
+    
+    <li>
+        <a href="#menucountries" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-sitemap"></i>{{ __('Manage Countries') }}</a>
+        <ul class="collapse list-unstyled
+        @if(request()->is('admin/attribute/*/manage') && request()->input('type')=='country')
+          show
+        @elseif(request()->is('admin/attribute/*/manage') && request()->input('type')=='city')
+          show
+        @elseif(request()->is('admin/attribute/*/manage') && request()->input('type')=='neighborhood')
+          show
+        @endif" id="menucountries" data-parent="#accordion" >
+                <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='country') active @endif">
+                    <a href="{{ route('admin-cou-index') }}"><span>{{ __('Main Country') }}</span></a>
+                </li>
+                <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='city') active @endif">
+                    <a href="{{ route('admin-city-index') }}"><span>{{ __('City') }}</span></a>
+                </li>
+                <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='neighborhood') active @endif">
+                    <a href="{{ route('admin-neigh-index') }}"><span>{{ __('Neighborhood') }}</span></a>
+                </li>
+        </ul>
+    </li>
 
     <li>
         <a href="{{ route('admin-prod-import') }}"><i class="fas fa-upload"></i>{{ __('Bulk Product Upload') }}</a>

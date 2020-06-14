@@ -272,6 +272,14 @@ Route::prefix('admin')->group(function() {
   Route::post('/category/edit/{id}', 'Admin\CategoryController@update')->name('admin-cat-update');
   Route::get('/category/delete/{id}', 'Admin\CategoryController@destroy')->name('admin-cat-delete');
   Route::get('/category/status/{id1}/{id2}', 'Admin\CategoryController@status')->name('admin-cat-status');
+  Route::get('/country/datatables', 'Admin\CountryController@datatables')->name('admin-cou-datatables'); //JSON REQUEST
+  Route::get('/country', 'Admin\CountryController@index')->name('admin-cou-index');
+  Route::get('/country/status/{id1}/{id2}', 'Admin\CountryController@status')->name('admin-cou-status');
+  Route::get('/country/create', 'Admin\CountryController@create')->name('admin-cou-create');
+  Route::post('/country/create', 'Admin\CountryController@store')->name('admin-cou-store');
+  Route::get('/country/edit/{id}', 'Admin\CountryController@edit')->name('admin-cou-edit');
+  Route::post('/country/edit/{id}', 'Admin\CountryController@update')->name('admin-cou-update');
+  Route::get('/country/delete/{id}', 'Admin\CountryController@destroy')->name('admin-cou-delete');
 
 
   //------------ ADMIN ATTRIBUTE SECTION ------------
@@ -300,6 +308,16 @@ Route::prefix('admin')->group(function() {
   Route::get('/subcategory/delete/{id}', 'Admin\SubCategoryController@destroy')->name('admin-subcat-delete');
   Route::get('/subcategory/status/{id1}/{id2}', 'Admin\SubCategoryController@status')->name('admin-subcat-status');
   Route::get('/load/subcategories/{id}/', 'Admin\SubCategoryController@load')->name('admin-subcat-load'); //JSON REQUEST
+ 
+  Route::get('/city/datatables', 'Admin\CityController@datatables')->name('admin-city-datatables'); //JSON REQUEST
+  Route::get('/city', 'Admin\CityController@index')->name('admin-city-index');
+  Route::get('/city/create', 'Admin\CityController@create')->name('admin-city-create');
+  Route::post('/city/create', 'Admin\CityController@store')->name('admin-city-store');
+  Route::get('/city/edit/{id}', 'Admin\CityController@edit')->name('admin-city-edit');
+  Route::post('/city/edit/{id}', 'Admin\CityController@update')->name('admin-city-update');
+  Route::get('/city/delete/{id}', 'Admin\CityController@destroy')->name('admin-city-delete');
+  Route::get('/city/status/{id1}/{id2}', 'Admin\CityController@status')->name('admin-city-status');
+  Route::get('/load/city/{id}/', 'Admin\CityController@load')->name('admin-city-load'); //JSON REQUEST
 
   // SUBCATEGORY SECTION ENDS------------
 
@@ -314,6 +332,16 @@ Route::prefix('admin')->group(function() {
   Route::get('/childcategory/delete/{id}', 'Admin\ChildCategoryController@destroy')->name('admin-childcat-delete');
   Route::get('/childcategory/status/{id1}/{id2}', 'Admin\ChildCategoryController@status')->name('admin-childcat-status');
   Route::get('/load/childcategories/{id}/', 'Admin\ChildCategoryController@load')->name('admin-childcat-load'); //JSON REQUEST
+
+  Route::get('/neighborhood/datatables', 'Admin\NeighborhoodController@datatables')->name('admin-neigh-datatables'); //JSON REQUEST
+  Route::get('/neighborhood', 'Admin\NeighborhoodController@index')->name('admin-neigh-index');
+  Route::get('/neighborhood/create', 'Admin\NeighborhoodController@create')->name('admin-neigh-create');
+  Route::post('/neighborhood/create', 'Admin\NeighborhoodController@store')->name('admin-neigh-store');
+  Route::get('/neighborhood/edit/{id}', 'Admin\NeighborhoodController@edit')->name('admin-neigh-edit');
+  Route::post('/neighborhood/edit/{id}', 'Admin\NeighborhoodController@update')->name('admin-neigh-update');
+  Route::get('/neighborhood/delete/{id}', 'Admin\NeighborhoodController@destroy')->name('admin-neigh-delete');
+  Route::get('/neighborhood/status/{id1}/{id2}', 'Admin\NeighborhoodController@status')->name('admin-neigh-status');
+  Route::get('/load/neighborhood/{id}/', 'Admin\NeighborhoodController@load')->name('admin-neigh-load'); //JSON REQUEST
 
   // CHILDCATEGORY SECTION ENDS------------
 
