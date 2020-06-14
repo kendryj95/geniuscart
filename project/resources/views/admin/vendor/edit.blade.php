@@ -96,6 +96,54 @@
 												<div class="row">
 													<div class="col-lg-4">
 														<div class="left-area">
+																<h4 class="heading">{{ __("Shop Country") }} *</h4>
+														</div>
+													</div>
+													<div class="col-lg-7">
+														<select class="input-field" name="country_id" required>
+															<option value="">{{ $langg->lang157 }}</option>
+															  @foreach ($countries as $item)
+																<option value="{{$item->id}}" @if(count($countries)==1) selected @endif>{{$item->country_name}}</option>
+															  @endforeach
+															</select>
+													</div>
+												</div>
+												
+												<div class="row">
+													<div class="col-lg-4">
+														<div class="left-area">
+																<h4 class="heading">{{ __("Shop City") }} *</h4>
+														</div>
+													</div>
+													<div class="col-lg-7">
+														<select id="select-city-subs" class="input-field" name="city_id" required>
+															<option value="">{{ $langg->lang813 }}</option>
+															  @foreach ($cities as $item)
+																<option value="{{$item->id}}" @if($item->id == $data->city_id) selected @endif>{{$item->city_name}}</option>
+															  @endforeach
+															</select>
+													</div>
+												</div>
+												
+												<div class="row">
+													<div class="col-lg-4">
+														<div class="left-area">
+																<h4 class="heading">{{ __("Shop Neighborhood") }} *</h4>
+														</div>
+													</div>
+													<div class="col-lg-7">
+														<select id="select-neighborhood-subs" class="input-field" name="neighborhood_id" required>
+															<option value="">{{ $langg->lang814 }}</option>
+															@foreach ($neighborhoods as $item)
+																<option value="{{$item->id}}" @if($item->id == $data->neighborhood_id) selected @endif>{{$item->name}}</option>
+															@endforeach
+															</select>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-lg-4">
+														<div class="left-area">
 																<h4 class="heading">{{ __("Shop Address") }} *</h4>
 														</div>
 													</div>

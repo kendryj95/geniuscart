@@ -50,7 +50,32 @@
 
     // Nice Select Active js
     $('.select').niceSelect();
-    //  Nice Select Ends    
+	//  Nice Select Ends   
+	
+	$('#select-city-subs').on('change', function(event){
+		var id_city = $(this).val();
+		if (id_city != '') {
+		  $('#select-neighborhood-subs').prop('disabled',true);
+		  $.ajax({
+			url: `${mainurl}/neighborhood/city`,
+			type: "GET",
+			data:{id_city:id_city},
+			dataType: "json",
+			success: function(data) {
+			  var html = '<option value="">Select</option>';
+			  for (const value of data) {
+				html += `<option value="${value.id}">${value.name}</option>`;
+			  }
+			  $('#select-neighborhood-subs').prop('disabled',false).html(html);
+			}
+		  })
+		} else {
+		  var html = '<option value="">Select</option>';
+		  
+		  $('#select-neighborhood-subs').html(html);
+		}
+		
+	  })
 
 })(jQuery);
 

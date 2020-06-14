@@ -159,6 +159,10 @@ class GeneralSettingController extends Controller
         if ($request->instamojo_sandbox == ""){
             $input['instamojo_sandbox'] = 0;
         }
+        
+        if ($request->payu_sandbox == ""){
+            $input['payu_sandbox'] = 0;
+        }
 
         if ($request->paypal_mode == ""){
             $input['paypal_mode'] = 'live';
@@ -326,8 +330,13 @@ class GeneralSettingController extends Controller
         $data->is_razorpay = $status;
         $data->update();
     }
-
-
+    
+    public function payu($status)
+    {
+        $data = Generalsetting::findOrFail(1);
+        $data->payu_check = $status;
+        $data->update();
+    }
 
     public function stripe($status)
     {

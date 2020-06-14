@@ -44,13 +44,13 @@
                 </div>
 
                 <div class="row">
-                  <label class="control-label col-sm-3" for="gplus">{{ $langg->lang527 }} *</label>
+                  <label class="control-label col-sm-3" for="instagram">{{ $langg->lang820 }} *</label>
                   <div class="col-sm-6">
-                    <input class="form-control" name="g_url" id="gplus" placeholder="{{ $langg->lang527 }}" required="" type="text" value="{{$data->g_url}}">
+                    <input class="form-control" name="i_url" id="instagram" placeholder="{{ $langg->lang820 }}" required="" type="text" value="{{$data->i_url}}">
                   </div>
                   <div class="col-sm-3">
                     <label class="switch">
-                      <input type="checkbox" name="g_check" value="1" {{$data->g_check==1?"checked":""}}>
+                      <input type="checkbox" name="i_check" value="1" {{$data->i_check==1?"checked":""}}>
                       <span class="slider round"></span>
                     </label>
                   </div>
@@ -70,13 +70,13 @@
                 </div>
 
                 <div class="row">
-                  <label class="control-label col-sm-3" for="linkedin">{{ $langg->lang529 }} *</label>
+                  <label class="control-label col-sm-3" for="ws">{{ $langg->lang821 }} *</label>
                   <div class="col-sm-6">
-                    <input class="form-control" name="l_url" id="linkedin" placeholder="{{ $langg->lang529 }}" required="" type="text" value="{{$data->l_url}}">
+                    <input class="form-control" name="w_url" id="ws" placeholder="{{ $langg->lang821 }}" required="" type="text" value="{{$data->w_url}}">
                   </div>
                   <div class="col-sm-3">
                     <label class="switch">
-                      <input type="checkbox" name="l_check" value="1" {{$data->l_check==1?"checked":""}}>
+                      <input type="checkbox" name="w_check" value="1" {{$data->w_check==1?"checked":""}}>
                       <span class="slider round"></span>
                     </label>
                   </div>

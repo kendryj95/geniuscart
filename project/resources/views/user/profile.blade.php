@@ -69,20 +69,33 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-lg-6">
-                                                    <input name="city" type="text" class="input-field"
-                                                        placeholder="{{ $langg->lang268 }}" value="{{ $user->city }}">
+                                                <div class="col-lg-12">
+                                                    <select class="input-field" name="country_id" required>
+                                                        <option value="">{{ $langg->lang157 }}</option>
+                                                          @foreach ($countries as $item)
+                                                            <option value="{{$item->id}}" @if(count($countries)==1) selected @endif>{{$item->country_name}}</option>
+                                                          @endforeach
+                                                        </select>
                                                 </div>
     
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <select id="select-city-subs" class="input-field" name="city_id" required>
+                                                            <option value="">{{ $langg->lang813 }}</option>
+                                                              @foreach ($cities as $item)
+                                                                <option value="{{$item->id}}" @if($item->id == $user->city_id) selected @endif>{{$item->city_name}}</option>
+                                                              @endforeach
+                                                            </select>
+                                                        </div>
+    
                                                 <div class="col-lg-6">
-                                                    <select class="input-field" name="country">
-                                                        <option value="">{{ $langg->lang157 }}</option>
-                                                        @foreach (DB::table('countries')->get() as $data)
-                                                            <option value="{{ $data->country_name }}" {{ $user->country == $data->country_name ? 'selected' : '' }}>
-                                                                {{ $data->country_name }}
-                                                            </option>		
-                                                         @endforeach
-                                                    </select>
+                                                    <select id="select-neighborhood-subs" class="input-field selectpicker" name="neighborhood_id" data-live-search="true" required>
+                                                        <option value="">{{ $langg->lang814 }}</option>
+                                                        @foreach ($neighborhoods as $item)
+                                                            <option value="{{$item->id}}" @if($item->id == $user->neighborhood_id) selected @endif>{{$item->name}}</option>
+                                                        @endforeach
+                                                        </select>
                                                 </div>
     
                                             </div>

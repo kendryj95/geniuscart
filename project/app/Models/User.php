@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class User extends Authenticatable
 {
 
-    protected $fillable = ['name', 'photo', 'zip', 'residency', 'city', 'country', 'address', 'phone', 'fax', 'email','password','affilate_code','verification_link','shop_name','owner_name','shop_number','shop_address','reg_number','shop_message','is_vendor','shop_details','shop_image','f_url','g_url','t_url','l_url','f_check','g_check','t_check','l_check','shipping_cost','date','mail_sent'];
+    protected $fillable = ['name', 'photo', 'zip', 'residency', 'city', 'city_id', 'country', 'country_id', 'neighborhood_id', 'address', 'phone', 'fax', 'email','password','affilate_code','verification_link','shop_name','owner_name','shop_number','shop_address','reg_number','shop_message','is_vendor','shop_details','shop_image','f_url','i_url','t_url','w_url','f_check','i_check','t_check','w_check','shipping_cost','date','mail_sent'];
 
 
     protected $hidden = [
@@ -155,6 +156,45 @@ class User extends Authenticatable
     public function displayWarning()
     {
         return $this->verifies()->where('admin_warning','=','1')->orderBy('id','desc')->first()->warning_reason;
+    }
+
+    public function scopeCountriesUser($query)
+    {
+        $union = DB::table('products AS p')->select('c.id','c.country_name')
+        ->join('countries AS c','product_country_id','=','c.id')
+        ->groupBy('c.id')
+        ->orderBy('c.country_name','ASC');
+
+        return $query->select('c.id','c.country_name')
+        ->join('countries AS c','country_id','=','c.id')
+        ->groupBy('c.id')
+        ->orderBy('c.country_name','ASC')
+        ->union($union);
+    }
+
+    public function scopeCitiesUserByCountryId($query, $country_id)
+    {
+        $union = DB::table('products AS p')->select('c.id','c.city_name')
+        ->join('cities AS c','product_city_id','=','c.id')
+        ->where('p.product_country_id',$country_id)
+        ->orderBy('c.city_name','ASC')
+        ->groupBy('product_city_id');
+
+        return $query->select('c.id','c.city_name')
+        ->join('cities AS c','city_id','=','c.id')
+        ->where('users.country_id',$country_id)
+        ->orderBy('c.city_name','ASC')
+        ->groupBy('city_id')
+        ->union($union);
+    }
+    
+    public function scopeNeighborhoodsUserByCityId($query, $city_id)
+    {
+        return $query->select('c.id','c.name')
+        ->join('neighborhoods AS c','neighborhood_id','=','c.id')
+        ->where('users.city_id',$city_id)
+        ->orderBy('c.name','ASC')
+        ->groupBy('neighborhood_id');
     }
 
 }

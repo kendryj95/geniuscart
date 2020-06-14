@@ -128,7 +128,7 @@
                                 <div id="resp" class="col-md-12">
 
                                                                             <span class="help-block">
-                                <strong>{{ $langg->lang494 }} {{ $sign->sign }}{{ $gs->withdraw_fee }} {{ $langg->lang495 }} {{ $gs->withdraw_charge }}% {{ $langg->lang496 }}</strong>
+                                <strong>{{ $langg->lang494 }} {{ $sign->sign }}{{ $gs->withdraw_fee_vendor }} {{ $langg->lang495 }} {{ $gs->withdraw_charge_vendor }}% {{ $langg->lang496 }}</strong>
                             </span>
                                                                     </div>
 

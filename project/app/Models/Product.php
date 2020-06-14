@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 class Product extends Model
 {
 
-    protected $fillable = ['user_id','category_id','product_type','affiliate_link','sku', 'subcategory_id', 'childcategory_id', 'attributes', 'name', 'photo', 'size','size_qty','size_price', 'color', 'details','price','previous_price','stock','policy','status', 'views','tags','featured','best','top','hot','latest','big','trending','sale','features','colors','product_condition','ship','meta_tag','meta_description','youtube','type','file','license','license_qty','link','platform','region','licence_type','measure','discount_date','is_discount','whole_sell_qty','whole_sell_discount','catalog_id','slug'];
+    protected $fillable = ['user_id','category_id','product_type','affiliate_link','sku', 'subcategory_id', 'childcategory_id','product_country_id', 'product_city_id', 'attributes', 'name', 'photo', 'size','size_qty','size_price', 'color', 'details','price','previous_price','stock','policy','status', 'views','tags','featured','best','top','hot','latest','big','trending','sale','features','colors','product_condition','ship','meta_tag','meta_description','youtube','type','file','license','license_qty','link','platform','region','licence_type','measure','discount_date','is_discount','whole_sell_qty','whole_sell_discount','catalog_id','slug'];
 
     public static function filterProducts($collection)
     {
@@ -469,6 +469,32 @@ class Product extends Model
             return '';
         }
         return explode(',', $value);
+    }
+
+    public function ScopeCategoryWithProduct($query)
+    {
+        return $query->select('c.id','c.name AS name')
+        ->join('categories AS c','products.category_id','=','c.id')
+        ->groupBy('products.category_id')
+        ->orderBy('c.name','ASC');
+    }
+    
+    public function ScopeCategoryWithProductByIdCategory($query,$id_category)
+    {
+        return $query->select('c.id','c.name AS name')
+        ->join('subcategories AS c','products.subcategory_id','=','c.id')
+        ->where('products.category_id',$id_category)
+        ->groupBy('products.subcategory_id')
+        ->orderBy('c.name','ASC');
+    }
+    
+    public function ScopeCategoryWithProductByIdSubcategory($query,$id_subcategory)
+    {
+        return $query->select('c.id','c.name AS name')
+        ->join('childcategories AS c','products.childcategory_id','=','c.id')
+        ->where('products.subcategory_id',$id_subcategory)
+        ->groupBy('products.childcategory_id')
+        ->orderBy('c.name','ASC');
     }
 
 

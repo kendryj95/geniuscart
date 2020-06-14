@@ -14,6 +14,7 @@ use App\Models\UserSubscription;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Auth;
+use DB;
 
 class VendorController extends Controller
 {
@@ -116,7 +117,10 @@ class VendorController extends Controller
     public function edit($id)
     {
         $data = User::findOrFail($id);
-        return view('admin.vendor.edit',compact('data'));
+        $neighborhoods = [];
+        if ($data->city_id != "")
+            $neighborhoods = DB::table('neighborhoods')->where('city_id',$data->city_id)->orderBy('name','ASC')->get();
+        return view('admin.vendor.edit',compact('data','neighborhoods'));
     }
 
 

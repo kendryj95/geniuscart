@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
 use App\Models\Category;
+use App\Models\User;
 use Carbon\Carbon;
 use Session;
 use Illuminate\Support\Collection;
@@ -30,6 +31,35 @@ class AppServiceProvider extends ServiceProvider
             $settings->with('gs', DB::table('generalsettings')->find(1));
             $settings->with('seo', DB::table('seotools')->find(1));
             $settings->with('categories', Category::where('status','=',1)->get());   
+            $countries = DB::table('countries')->where('status','=',1)->get();
+            $settings->with('countries', $countries);   
+            $cities = [];
+            if (count($countries) == 1) {
+                $cities = DB::table('cities')->where('status',1)->where('country_id',$countries[0]->id)->get();
+            } elseif (count($countries) > 1) {
+                $cities = DB::table('cities')->where('status',1)->get();
+            }
+            $settings->with('cities', $cities); 
+            
+            try {
+                $countries_products = User::countriesUser()->get();
+                $countries_products = json_decode(json_encode($countries_products), true);
+                foreach ($countries_products as $i => $item) {
+                    $countries_products[$i]['cities'] = User::citiesUserByCountryId($item['id'])->get();
+                }
+                $countries_products = json_decode(json_encode($countries_products), true);
+                foreach ($countries_products as $i => $item) {
+                    foreach ($item['cities'] as $j => $value) {
+                        $countries_products[$i]['cities'][$j]['nborhoods'] = User::neighborhoodsUserByCityId($value['id'])->get();
+                    }
+                }
+                $countries_products = json_decode(json_encode($countries_products), true);
+                // dd($countries_products);
+            } catch (\Exception $th) {
+                dd($th->getMessage());
+            }
+            $settings->with('countries_products', $countries_products); 
+
             if (Session::has('language')) 
             {
                 $data = DB::table('languages')->find(Session::get('language'));

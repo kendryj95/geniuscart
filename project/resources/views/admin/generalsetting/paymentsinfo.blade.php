@@ -48,6 +48,94 @@
                             <div class="col-lg-3">
                               <div class="left-area">
                                 <h4 class="heading">
+                                    {{ __('PayU') }}
+                                </h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="action-list">
+                                    <select class="process select droplinks {{ $gs->payu_check == 1 ? 'drop-success' : 'drop-danger' }}">
+                                      <option data-val="1" value="{{route('admin-gs-payu',1)}}" {{ $gs->payu_check == 1 ? 'selected' : '' }}>{{ __('Activated') }}</option>
+                                      <option data-val="0" value="{{route('admin-gs-payu',0)}}" {{ $gs->payu_check == 0 ? 'selected' : '' }}>{{ __('Deactivated') }}</option>
+                                    </select>
+                                  </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                            <div class="left-area">
+                                <h4 class="heading">{{ __('PayU Key') }} *
+                                  </h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" class="input-field" placeholder="{{ __('PayU Key') }}" name="payu_apikey" value="{{ $gs->payu_apikey }}" required="">
+                          </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                            <div class="left-area">
+                                <h4 class="heading">{{ __('PayU Merchant ID') }} *
+                                  </h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" class="input-field" placeholder="{{ __('PayU Merchant ID') }}" name="payu_merchantid" value="{{ $gs->payu_merchantid }}" required="">
+                          </div>
+                        </div>
+                        
+                        <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                            <div class="left-area">
+                                <h4 class="heading">{{ __('PayU Account ID') }} *
+                                  </h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" class="input-field" placeholder="{{ __('PayU Account ID') }}" name="payu_accountid" value="{{ $gs->payu_accountid }}" required="">
+                          </div>
+                        </div>
+
+
+                        <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                            <div class="left-area">
+                                <h4 class="heading">{{ __('PayU Text') }} *</h4>
+
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <textarea class="input-field" name="payu_text" placeholder="{{ __('PayU Text') }}">{{ $gs->payu_text }}</textarea>
+
+                          </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                            <div class="left-area">
+                                <h4 class="heading">{{ __('PayU Sandbox Check') }} *
+                                  </h4>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <label class="switch">
+                              <input type="checkbox" name="payu_sandbox" value="1" {{ $gs->payu_sandbox == 1 ? "checked":"" }}>
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
+                          </div>
+
+
+<hr>
+
+
+                        <div class="row justify-content-center">
+                            <div class="col-lg-3">
+                              <div class="left-area">
+                                <h4 class="heading">
                                     {{ __('Stripe') }}
                                 </h4>
                               </div>
@@ -610,6 +698,42 @@
                         <div class="row justify-content-center">
                           <div class="col-lg-3">
                             <div class="left-area">
+                                <h4 class="heading">{{ __('Withdraw Fee Vendor') }} *
+                                  </h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" class="input-field" placeholder="{{ __('Withdraw Fee Vendor') }}" name="withdraw_fee_vendor" value="{{ $gs->withdraw_fee_vendor }}" required="">
+                          </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                            <div class="left-area">
+                                <h4 class="heading">{{ __('Withdraw Charge Vendor(%)') }} *
+                                  </h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" class="input-field" placeholder="{{ __('Withdraw Charge Vendor(%)') }}" name="withdraw_charge_vendor" value="{{ $gs->withdraw_charge_vendor }}" required="">
+                          </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                            <div class="left-area">
+                                <h4 class="heading">{{ __('Tax Vendor(%)') }} *
+                                  </h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" class="input-field" placeholder="{{ __('Tax Vendor(%)') }}" name="tax_vendor" value="{{ $gs->tax_vendor }}" required="">
+                          </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                            <div class="left-area">
                                 <h4 class="heading">{{ __('Fixed Commission') }} *
                                   </h4>
                                   <p class="sub-heading">{{ __('Fixed Commission Charge(Product Price + Commission)') }}</p>
@@ -652,9 +776,6 @@
                             </label>
                           </div>
                           </div>
-
-
-
 
                         <div class="row justify-content-center">
                           <div class="col-lg-3">

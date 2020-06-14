@@ -162,7 +162,9 @@ else {
 .input-field.error::-webkit-input-placeholder,
 .breadcrumb-area .pages li a:hover,
 .categories_menu_inner > ul > li > ul.categories_mega_menu > li > a:hover,
+.countries_menu_inner > ul > li > ul.countries_mega_menu > li > a:hover,
 .categorie_sub_menu ul li a:hover,
+.countries_sub_menu ul li a:hover,
 nav .menu li a:hover,
 nav .menu li.dropdown.open > a,
 .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-1 .title,
@@ -405,6 +407,8 @@ nav .menu li.dropdown.open > a,
 }
 .categorie_sub_menu ul li a:hover {
   color: <?php echo $color; ?>; }
+.countries_sub_menu ul li a:hover {
+  color: <?php echo $color; ?>; }
 
   .elegant-pricing-tables h3 .price-sticker,
 .elegant-pricing-tables:hover,
@@ -443,6 +447,8 @@ color: <?php echo $color; ?>;
   background: <?php echo $color; ?>;
   border-color: <?php echo $color; ?>; }
   .categories_menu_inner > ul > li > ul.categories_mega_menu > li > a:hover {
+  color: <?php echo $color; ?>; }
+  .countries_menu_inner > ul > li > ul.countries_mega_menu > li > a:hover {
   color: <?php echo $color; ?>; }
               .contact-us .left-area .contact-form .form-input i {
               color: <?php echo $color; ?>; 
@@ -651,7 +657,7 @@ input[type=checkbox]:checked + label:before {
   .logo-header .search-box .search-form button {
         background: <?php echo $color; ?>;
         }
-  .categories_title {
+  .categories_title, .countries_title {
   background: <?php echo $color; ?>;
  }
  nav .menu li:last-child a{

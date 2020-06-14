@@ -6112,7 +6112,16 @@ Logo Header Area Start
 .mainmenu-area .categories_menu {
   position: relative; }
 
+.mainmenu-area .countries_menu {
+  position: relative; }
+
 .mainmenu-area .categories_menu .categories_menu_inner {
+  position: absolute;
+  border-left: 0;
+  border-right: 0;
+  display: none;
+  }
+.mainmenu-area .countries_menu .countries_menu_inner {
   position: absolute;
   border-left: 0;
   border-right: 0;
@@ -6120,6 +6129,9 @@ Logo Header Area Start
   }
 
 .mainmenu-area .categories_menu .categories_title h2 {
+  padding: 12px 14px 12px;
+  }
+.mainmenu-area .countries_menu .countries_title h2 {
   padding: 12px 14px 12px;
   }
 
@@ -6130,18 +6142,25 @@ Logo Header Area Start
   text-align: center;
   font-size: 14px;
   margin-top: 4px; }
+.mainmenu-area .countries_menu .countries_title h2 i.arrow-down {
+  float: right;
+  margin-right: 15px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 4px; }
 
 /* 04. categories area css here */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .categories_menu {
+  .categories_menu, .countries_menu {
     position: relative; } }
 
 @media only screen and (max-width: 767px) {
-  .categories_menu {
+  .categories_menu, .countries_menu {
     margin-bottom: 45px;
     position: relative; } }
 
-.categories_title {
+.categories_title, .countries_title {
   background: #131313;
   cursor: pointer;
   }
@@ -6156,12 +6175,26 @@ Logo Header Area Start
   margin-bottom: 0px;
   /* display: block; */
   }
+.countries_title h2 {
+  font-size: 15px;
+  font-weight: 600;
+  /* line-height: 26px; */
+  color: #ffffff;
+  cursor: pointer;
+  /* padding: 12px 0 12px 22px; */
+  margin-bottom: 0px;
+  /* display: block; */
+  }
 
 .categories_title h2 i {
   font-size: 14px;
   margin-right: 10px; }
 
-.categories_menu_inner {
+.countries_title h2 i {
+  font-size: 14px;
+  margin-right: 10px; }
+
+.categories_menu_inner, .countries_menu_inner {
   padding: 7px 0 7px;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
@@ -6171,14 +6204,14 @@ Logo Header Area Start
   z-index: 9; }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .categories_menu_inner {
+  .categories_menu_inner,.countries_menu_inner {
     display: none;
     position: absolute;
     width: 100%;
     top: 100%; } }
 
 @media only screen and (max-width: 767px) {
-  .categories_menu_inner {
+  .categories_menu_inner,.countries_menu_inner {
     display: none;
     position: absolute;
     width: 100%;
@@ -6198,6 +6231,29 @@ Logo Header Area Start
   }
 
 .categories_menu_inner > ul > li {
+  line-height: 40px;
+  padding: 0 10px;
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  -webkit-transition:all 0.3s linear;
+  -o-transition:all 0.3s linear;
+  transition:all 0.3s linear;
+  }
+.countries_menu_inner > ul > li {
+  position: relative;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  color: #333; }
+  .countries_menu_inner > ul > li > ul.countries_mega_menu ul li a{
+  -webkit-transition:all 0.3s linear;
+  -o-transition:all 0.3s linear;
+  transition:all 0.3s linear;
+  }
+
+.countries_menu_inner > ul > li {
   line-height: 40px;
   padding: 0 10px;
   display: block;
@@ -6332,6 +6388,130 @@ Logo Header Area Start
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .categories_menu_inner ul li ul.categories_mega_menu.open {
     left: 0; } }
+  
+    .countries_menu_inner > ul > li:hover{
+    padding-left: 20px;
+  }
+
+  .countries_menu_inner > ul > li > ul.countries_mega_menu ul li a:hover
+  {
+    padding-left: 10px;
+  }
+
+.countries_menu_inner > ul > li a {
+  color: #333; }
+
+.countries_menu_inner > ul > li img {
+  width: 18px;
+  margin-right: 10px; }
+
+.countries_menu_inner > ul > li.dropdown_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.countries_menu_inner > ul > li.dropdown_list .link-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+
+.countries_menu_inner > ul > li.dropdown_list .link-area > a {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center; }
+
+.countries_menu_inner > ul > li > a i {
+  padding-right: 10px;
+ }
+
+.countries_menu_inner > ul > li > ul.countries_mega_menu {
+  position: absolute;
+  left: 110%;
+  width: 480px;
+  padding: 16px 15px 0;
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  z-index: 9;
+  background: #fff;
+  -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.15); }
+
+@media only screen and (max-width: 767px) {
+  .countries_menu_inner > ul > li > ul.countries_mega_menu {
+    left: 0;
+    width: 100%;
+    top: 100%;
+    max-height: 250px;
+    overflow: auto; } }
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .countries_menu_inner > ul > li > ul.countries_mega_menu {
+    left: 0;
+    top: 100%;
+    max-height: 250px;
+    overflow: auto; } }
+
+.countries_menu_inner > ul > li > ul.countries_mega_menu > li {
+  width: 50%;
+  float: left;
+  padding: 0px 5px 20px 5px; }
+
+@media only screen and (max-width: 767px) {
+  .countries_menu_inner > ul > li > ul.countries_mega_menu > li {
+    width: 100%; } }
+
+.countries_menu_inner > ul > li > ul.countries_mega_menu > li > a {
+  border-bottom: 1px solid #e5e5e5;
+  display: block;
+  margin-bottom: 6px;
+
+  line-height: 30px;
+  padding-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444; }
+
+.countries_menu_inner > ul > li > ul.countries_mega_menu > li > a:hover {
+  color: #7ecc13; }
+
+.countries_menu_inner > ul > li ul.countries_mega_menu.column_1 {
+  width: 200px;
+  padding: 10px 15px 0; }
+
+.countries_menu_inner > ul > li ul.countries_mega_menu.column_1 li {
+  width: 100%;
+  padding: 0; }
+
+.countries_menu_inner > ul > li ul.countries_mega_menu.column_1 li:last-child a {
+  border-bottom: 0; }
+
+.countries_menu_inner ul li ul.countries_mega_menu.open {
+  opacity: 1;
+  visibility: visible;
+  left: 100%; }
+
+@media only screen and (max-width: 767px) {
+  .countries_menu_inner ul li ul.countries_mega_menu.open {
+    left: 0; } }
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .countries_menu_inner ul li ul.countries_mega_menu.open {
+    left: 0; } }
 
 .categorie_sub_menu ul li a {
   font-size: 14px;
@@ -6344,9 +6524,24 @@ Logo Header Area Start
 .categorie_sub_menu ul li a:hover {
   color: #ff5500; }
 
+.countries_sub_menu ul li a {
+  font-size: 14px;
+  font-weight: 400;
+  color: #646464;
+  text-transform: capitalize;
+  line-height: 28px;
+  display: block; }
+
+.countries_sub_menu ul li a:hover {
+  color: #ff5500; }
+
 /*home two categorie css here*/
 @media only screen and (max-width: 767px) {
   .mainmenu-area .categories_menu {
+    margin-bottom: 26px; } }
+
+    @media only screen and (max-width: 767px) {
+  .mainmenu-area .countries_menu {
     margin-bottom: 26px; } }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -6355,6 +6550,14 @@ Logo Header Area Start
 
 @media only screen and (max-width: 767px) {
   .mainmenu-area .categories_menu_inner {
+    z-index: 99; } }
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .mainmenu-area .countries_menu_inner {
+    z-index: 99; } }
+
+@media only screen and (max-width: 767px) {
+  .mainmenu-area .countries_menu_inner {
     z-index: 99; } }
 
 nav .menu li a {
@@ -8012,7 +8215,7 @@ nav button {
       width: 100%;
       display: block;
       text-align: center;
-      border: 1px solid #00;
+      border: 1px solid #000;
       }
       .product-details-page #product-details-tab .top-menu-area ul {
         border: 0px;
@@ -10033,6 +10236,13 @@ nav button {
       position: relative;
       margin-bottom: 15px; }
        .login-area .form-input input {
+        width: 100%;
+        height: 50px;
+        background: #f3f8fc;
+        padding: 0px 30px 0px 45px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 14px; }
+       .login-area .form-input select {
         width: 100%;
         height: 50px;
         background: #f3f8fc;
@@ -12350,6 +12560,12 @@ input[type=checkbox]:checked:disabled + label:before {
     height: 15px;
     margin-right: 5px;
 }
+
+.countries_menu img {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
 .rx-parent {
  cursor: pointer; }
 
@@ -12544,6 +12760,9 @@ span.discount {
     color: white;
 }
 .categories_menu_inner > ul > li.rx-child {
+  display: none;
+}
+.countries_menu_inner > ul > li.rx-child {
   display: none;
 }
 .hot-and-new-item .categori .item-list li .single-box .right-area .text a {
@@ -13106,6 +13325,12 @@ margin-bottom: 15px;
 .categories_menu_inner > ul > li a{
   display: block;
 }
+.countries_menu_inner > ul > li.dropdown_list .link-area > span{
+  width: 100%;
+}
+.countries_menu_inner > ul > li a{
+  display: block;
+}
 .mainmenu-area{
   height: 40px;
 }
@@ -13121,6 +13346,21 @@ margin-bottom: 15px;
   margin-top: 14px;
 }
 .categories_title h2 {
+  margin-bottom: 2px;
+}
+
+.mainmenu-area .countries_menu .countries_title h2{
+  padding: 0px 15px;
+}
+.mainmenu-area .countries_menu .countries_title h2{
+  height: 40px;
+  line-height: 40px;
+  /* margin-top: -2px; */
+}
+.mainmenu-area .countries_menu .countries_title h2 i.arrow-down {
+  margin-top: 14px;
+}
+.countries_title h2 {
   margin-bottom: 2px;
 }
 .contact-us .right-area .social-links ul li a.facebook{
@@ -13622,6 +13862,9 @@ line-height: unset;
 .mainmenu-area .categories_menu .categories_menu_inner {
   margin-top: -2px!important;
 }
+.mainmenu-area .countries_menu .countries_menu_inner {
+  margin-top: -2px!important;
+}
 
 .common-padding{
   padding: 4px 2px!important;
@@ -13658,6 +13901,13 @@ line-height: unset;
   display: block;
 }
 .mainmenu-area .categories_menu .categories_menu_inner{
+  padding-top: 0px!important;
+}
+.countries_menu_inner > ul{
+  border: 1px solid rgba(0, 0, 0, 0.08)!important;
+  display: block;
+}
+.mainmenu-area .countries_menu .countries_menu_inner{
   padding-top: 0px!important;
 }
 .mainmenu-bb {
@@ -14143,12 +14393,16 @@ nav .menu li a{
   .categorimenu-wrapper{
     position: absolute;
     top: 0px;
-    left: 0;
+    left: -45px;
     z-index: 9;
-    width: 50%;
+    width: 38%;
   }
 
-  .categories_menu_inner{
+  .countriesmenu-wraper {
+    left: 160px !important;
+  }
+
+  .categories_menu_inner,.countries_menu_inner{
     width: 300px;
   }
 
@@ -14371,6 +14625,10 @@ nav .menu li a{
 }
 
 .mainmenu-area .categories_menu{
+  z-index: 999;
+}
+
+.mainmenu-area .countries_menu{
   z-index: 999;
 }
 
@@ -14722,8 +14980,18 @@ div#myInputautocomplete-list {
 
 @media only screen and (max-width: 414px) {
   .categorimenu-wrapper {
-    width: 60%;
+    width: 45%;
+    left: 15px;
 }  
+.countriesmenu-wraper {
+  left: 165px !important;
+}
+.categorimenu-wrapper .categories_menu_inner {
+  width: 100% !important;
+}
+.countriesmenu-wraper .countries_menu_inner {
+  width: 100% !important;
+}
 .blog-area .aside .slider-wrapper {
 
   background: #ffff;
@@ -14960,7 +15228,7 @@ div#myInputautocomplete-list {
 .sub-categori .right-area .categori-item-area .item:hover .extra-list {
   left: 10px;
 }
-.categories_menu_inner {
+.categories_menu_inner,.countries_menu_inner {
   width: 280px;
 }
 .checkout .right-area .body-area .box {

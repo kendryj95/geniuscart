@@ -580,4 +580,15 @@ public function deleteDir($dirPath) {
 
 // -------------------------------- PRINT SECTION ENDS ----------------------------------------
 
+// AJAX GENERAL
+
+public function neighbordhoodByCity(Request $request) 
+{
+    $neighborhoods = DB::table('neighborhoods')->where('city_id',$request->id_city)->orderBy('name','ASC')->get();
+
+    return response()->json($neighborhoods);
+}
+
+// AJAX GENERAL ENDS
+
 }

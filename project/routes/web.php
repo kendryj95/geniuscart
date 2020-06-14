@@ -686,6 +686,7 @@ Route::prefix('admin')->group(function() {
   Route::get('/general-settings/paytm/{status}', 'Admin\GeneralSettingController@paytm')->name('admin-gs-paytm');
   Route::get('/general-settings/molly/{status}', 'Admin\GeneralSettingController@molly')->name('admin-gs-molly');
   Route::get('/general-settings/razor/{status}', 'Admin\GeneralSettingController@razor')->name('admin-gs-razor');
+  Route::get('/general-settings/payu/{status}', 'Admin\GeneralSettingController@payu')->name('admin-gs-payu');
 // Payment Gateways
 
   Route::get('/paymentgateway/datatables', 'Admin\PaymentGatewayController@datatables')->name('admin-payment-datatables'); //JSON REQUEST
@@ -1237,13 +1238,27 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
   Route::get('/autosearch/product/{slug}','Front\FrontendController@autosearch');
   // PRODCT AUTO SEARCH SECTION ENDS
 
+  // GET NEIGHBOORDHOOD BY CITY
+  Route::get('/neighborhood/city', 'Front\FrontendController@neighbordhoodByCity')->name('neighborhood-city');
+
+
   // CATEGORY SECTION
   Route::get('/category/{category?}/{subcategory?}/{childcategory?}','Front\CatalogController@category')->name('front.category');
   Route::get('/category/{slug1}/{slug2}','Front\CatalogController@subcategory')->name('front.subcat');
   Route::get('/category/{slug1}/{slug2}/{slug3}','Front\CatalogController@childcategory')->name('front.childcat');
   Route::get('/categories/','Front\CatalogController@categories')->name('front.categories');
   Route::get('/childcategories/{slug}', 'Front\CatalogController@childcategories')->name('front.childcategories');
+  Route::get('/category/filters/options/{type}/{id}', 'Front\CatalogController@optionsFiltersCategory')->name('front.category.filters.options');
+
   // CATEGORY SECTION ENDS
+
+  // COUNTRIES SECTION
+  Route::get('/country/{country?}/{city?}/{neighborhood?}','Front\CatalogController@country')->name('front.country');
+  Route::get('/country/{slug1}/{slug2}','Front\CatalogController@city')->name('front.city');
+  Route::get('/country/{slug1}/{slug2}/{slug3}','Front\CatalogController@neighborhood')->name('front.nborhood');
+  Route::get('/countries/','Front\CatalogController@countries')->name('front.countries');
+  Route::get('/country/filters/options/{type}/{id}', 'Front\CatalogController@optionsFiltersCountry')->name('front.country.filters.options');
+  // COUNTRIES SECTION ENDS
 
   // TAG SECTION
   Route::get('/tag/{slug}','Front\CatalogController@tag')->name('front.tag');
@@ -1309,6 +1324,9 @@ Route::get('/package/delete/{id}', 'Vendor\PackageController@destroy')->name('ve
   Route::get('/checkout/payment/cancle', 'Front\PaymentController@paycancle')->name('payment.cancle');
   Route::post('/checkout/payment/notify', 'Front\PaymentController@notify')->name('payment.notify');
   Route::get('/checkout/instamojo/notify', 'Front\InstamojoController@notify')->name('instamojo.notify');
+  Route::get('/checkout/payu/notify', 'Front\PayUController@notify')->name('payu.notify');
+  Route::post('/checkout/payu', 'Front\PayUController@store')->name('payu.submit'); 
+  Route::post('/checkout/payu/confirm', 'Front\PayUController@confirm')->name('payu.confirm');
 
   Route::post('/paystack/submit', 'Front\PaystackController@store')->name('paystack.submit');
   Route::post('/instamojo/submit', 'Front\InstamojoController@store')->name('instamojo.submit');

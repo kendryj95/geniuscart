@@ -44,13 +44,13 @@
                 </div>
 
                 <div class="row">
-                  <label class="control-label col-sm-3" for="gplus">{{ __('Google Plus') }} *</label>
+                  <label class="control-label col-sm-3" for="instagram">{{ __('Instagram') }} *</label>
                   <div class="col-sm-6">
-                    <input class="form-control" name="gplus" id="gplus" placeholder="{{ __('http://google.com/') }}" required="" type="text" value="{{$data->gplus}}">
+                    <input class="form-control" name="instagram" id="instagram" placeholder="{{ __('http://instagram.com/') }}" required="" type="text" value="{{$data->instagram}}">
                   </div>
                   <div class="col-sm-3">
                     <label class="switch">
-                      <input type="checkbox" name="g_status" value="1" {{$data->g_status==1?"checked":""}}>
+                      <input type="checkbox" name="i_status" value="1" {{$data->i_status==1?"checked":""}}>
                       <span class="slider round"></span>
                     </label>
                   </div>
@@ -84,13 +84,13 @@
 
 
                 <div class="row">
-                  <label class="control-label col-sm-3" for="dribble">{{ __('Dribble') }} *</label>
+                  <label class="control-label col-sm-3" for="whatsapp">{{ __('Whatsapp') }} *</label>
                   <div class="col-sm-6">
-                    <input class="form-control" name="dribble" id="dribble" placeholder="{{ __('https://dribbble.com/') }}" required="" type="text" value="{{$data->dribble}}">
+                    <input class="form-control" name="whatsapp" id="whatsapp" placeholder="{{ __('https://web.whatsapp.com') }}" required="" type="text" value="{{$data->whatsapp}}">
                   </div>
                   <div class="col-sm-3">
                     <label class="switch">
-                      <input type="checkbox" name="d_status" value="1" {{$data->d_status==1?"checked":""}}>
+                      <input type="checkbox" name="w_status" value="1" {{$data->w_status==1?"checked":""}}>
                       <span class="slider round"></span>
                     </label>
                   </div>

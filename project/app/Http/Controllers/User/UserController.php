@@ -14,6 +14,7 @@ use App\Models\Subscription;
 use App\Models\Generalsetting;
 use App\Models\UserSubscription;
 use App\Models\FavoriteSeller;
+use DB;
 
 class UserController extends Controller
 {
@@ -31,7 +32,10 @@ class UserController extends Controller
     public function profile()
     {
         $user = Auth::user();  
-        return view('user.profile',compact('user'));
+        $neighborhoods = [];
+        if ($user->city_id != "")
+            $neighborhoods = DB::table('neighborhoods')->where('city_id',$user->city_id)->orderBy('name','ASC')->get();
+        return view('user.profile',compact('user','neighborhoods'));
     }
 
     public function profileupdate(Request $request)
@@ -110,11 +114,15 @@ class UserController extends Controller
         $gs = Generalsetting::findOrfail(1);
         $user = Auth::user();
         $package = $user->subscribes()->where('status',1)->orderBy('id','desc')->first();
+        $neighborhoods = [];
+        if ($user->city_id != "")
+            $neighborhoods = DB::table('neighborhoods')->where('city_id',$user->city_id)->orderBy('name','ASC')->get();
+
         if($gs->reg_vendor != 1)
         {
             return redirect()->back();
         }
-        return view('user.package.details',compact('user','subs','package'));
+        return view('user.package.details',compact('user','subs','package','neighborhoods'));
     }
 
     public function vendorrequestsub(Request $request)
@@ -132,7 +140,7 @@ class UserController extends Controller
                     $input = $request->all();  
                     $user->is_vendor = 2;
                     $user->date = date('Y-m-d', strtotime($today.' + '.$subs->days.' days'));
-                    $user->mail_sent = 1;     
+                    $user->mail_sent = 1;
                     $user->update($input);
                     $sub = new UserSubscription;
                     $sub->user_id = $user->id;
@@ -159,12 +167,12 @@ class UserController extends Controller
                         'onumber' => "",
                     ];    
                     $mailer = new GeniusMailer();
-                    $mailer->sendAutoMail($data);        
+                    //$mailer->sendAutoMail($data);        
                     }
                     else
                     {
                     $headers = "From: ".$settings->from_name."<".$settings->from_email.">";
-                    mail($user->email,'Your Vendor Account Activated','Your Vendor Account Activated Successfully. Please Login to your account and build your own shop.',$headers);
+                    //mail($user->email,'Your Vendor Account Activated','Your Vendor Account Activated Successfully. Please Login to your account and build your own shop.',$headers);
                     }
 
                     return redirect()->route('user-dashboard')->with('success','Vendor Account Activated Successfully');

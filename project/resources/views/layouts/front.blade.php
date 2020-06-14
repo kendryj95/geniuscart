@@ -49,6 +49,8 @@
 
 @endif
 
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
 
 
 	@yield('styles')
@@ -295,7 +297,7 @@
 	<div class="mainmenu-area mainmenu-bb">
 		<div class="container">
 			<div class="row align-items-center mainmenu-area-innner">
-				<div class="col-lg-3 col-md-6 categorimenu-wrapper remove-padding">
+				<div class="col-lg-3 col-md-4 col-sm-6 categorimenu-wrapper remove-padding">
 					<!--categorie menu start-->
 					<div class="categories_menu">
 						<div class="categories_title">
@@ -377,7 +379,89 @@
 					</div>
 					<!--categorie menu end-->
 				</div>
-				<div class="col-lg-9 col-md-6 mainmenu-wrapper remove-padding">
+				<div class="col-lg-2 col-md-4 col-sm-6 categorimenu-wrapper countriesmenu-wraper remove-padding">
+					<!--categorie menu start-->
+					<div style="margin-left: 5px" class="countries_menu">
+						<div class="countries_title">
+							<h2 class="categori_toggle"><i class="fa fa-bars"></i>  {{ $langg->lang818 }} <i class="fa fa-angle-down arrow-down"></i></h2>
+						</div>
+						<div class="countries_menu_inner">
+							<ul>
+								@php
+								$i=1;
+								@endphp
+								@foreach($countries_products as $country)
+
+								<li class="{{count($country['cities']) > 0 ? 'dropdown_list':''}} {{ $i >= 15 ? 'rx-child' : '' }}">
+								@if(count($country['cities']) > 0)
+									<div style="margin-right: 10px" class="img">
+										<i class="icofont-world"></i>
+									</div>
+									<div class="link-area">
+										<span><a href="{{ route('front.country',\Helper::slug($country['country_name'])) }}">{{ $country['country_name']}}</a></span>
+										@if(count($country['cities']) > 0)
+										<a href="javascript:;">
+											<i class="fa fa-angle-right" aria-hidden="true"></i>
+										</a>
+										@endif
+									</div>
+
+								@else
+									<a href="{{ route('front.country',\Helper::slug($country['country_name'])) }}"> {{ $country['country_name']}}</a>
+
+								@endif
+									@if(count($country['cities']) > 0)
+
+									@php
+									$ck = 0;
+									foreach($country['cities'] as $subcat) {
+										if(count($subcat['nborhoods']) > 0) {
+											$ck = 1;
+											break;
+										}
+									}
+									@endphp
+									<ul class="{{ $ck == 1 ? 'countries_mega_menu' : 'countries_mega_menu column_1' }}">
+										@foreach($country['cities'] as $subcat)
+											<li>
+											<a href="{{ route('front.city',['slug1' => \Helper::slug($country['country_name']), 'slug2' => \Helper::slug($subcat['city_name'])]) }}">{{$subcat['city_name']}}</a>
+												@if(count($subcat['nborhoods']) > 0)
+													<div class="countries_sub_menu">
+														<ul>
+															@foreach($subcat['nborhoods'] as $childcat)
+															<li><a href="{{ route('front.nborhood',['slug1' => \Helper::slug($country['country_name']), 'slug2' => \Helper::slug($subcat['city_name']), 'slug3' => \Helper::slug($childcat['name'])]) }}">{{$childcat['name']}}</a></li>
+															@endforeach
+														</ul>
+													</div>
+												@endif
+											</li>
+										@endforeach
+									</ul>
+
+									@endif
+
+									</li>
+
+									@php
+									$i++;
+									@endphp
+
+									{{-- @if($i == 15)
+						                <li>
+						                <a href="{{ route('front.countries') }}"><i class="fas fa-plus"></i> {{ $langg->lang819 }} </a>
+						                </li>
+						                @break
+									@endif --}}
+
+
+									@endforeach
+
+							</ul>
+						</div>
+					</div>
+					<!--categorie menu end-->
+				</div>
+				<div class="col-lg-7 col-md-4 mainmenu-wrapper remove-padding">
 					<nav hidden>
 						<div class="nav-header">
 							<button class="toggle-bar"><span class="fa fa-bars"></span></button>
@@ -438,10 +522,10 @@
                                       </li>
                                       @endif
 
-                                      @if(App\Models\Socialsetting::find(1)->g_status == 1)
+                                      @if(App\Models\Socialsetting::find(1)->i_status == 1)
                                       <li>
-                                        <a href="{{ App\Models\Socialsetting::find(1)->gplus }}" class="google-plus" target="_blank">
-                                            <i class="fab fa-google-plus-g"></i>
+                                        <a href="{{ App\Models\Socialsetting::find(1)->instagram }}" class="instagram" target="_blank">
+                                            <i class="fab fa-instagram"></i>
                                         </a>
                                       </li>
                                       @endif
@@ -462,10 +546,10 @@
                                       </li>
                                       @endif
 
-                                      @if(App\Models\Socialsetting::find(1)->d_status == 1)
+                                      @if(App\Models\Socialsetting::find(1)->w_status == 1)
                                       <li>
-                                        <a href="{{ App\Models\Socialsetting::find(1)->dribble }}" class="dribbble" target="_blank">
-                                            <i class="fab fa-dribbble"></i>
+                                        <a href="{{ App\Models\Socialsetting::find(1)->whatsapp }}" class="whatsapp" target="_blank">
+                                            <i class="fab fa-whatsapp"></i>
                                         </a>
                                       </li>
                                       @endif
@@ -863,7 +947,38 @@
                                 <i class="icofont-email"></i>
                             </div>
 
-                           	</div>
+							   </div>
+							   <div class="col-lg-12">
+									<div class="form-input">
+										<select class="User Name" name="country_id" required>
+											<option value="">{{ $langg->lang157 }}</option>
+											  @foreach ($countries as $item)
+												<option value="{{$item->id}}" @if(count($countries)==1) selected @endif>{{$item->country_name}}</option>
+											  @endforeach
+											</select>
+											<i class="icofont-world"></i>
+									</div>
+							   </div>
+							   <div class="col-lg-6">
+									<div class="form-input">
+										<select id="select-city-layout" class="User Name" name="city_id" required>
+											<option value="">{{ $langg->lang813 }}</option>
+											  @foreach ($cities as $item)
+												<option value="{{$item->id}}">{{$item->city_name}}</option>
+											  @endforeach
+											</select>
+											<i class="icofont-world"></i>
+									</div>
+							   </div>
+							   <div class="col-lg-6">
+									<div class="form-input">
+										<select id="select-neighborhood-layout" class="User Name selectpicker" data-live-search="true" name="neighborhood_id" required>
+											<option value="">{{ $langg->lang814 }}</option>
+											  
+											</select>
+											<i class="icofont-world"></i>
+									</div>
+							   </div>
                            <div class="col-lg-6">
     <div class="form-input">
                                 <input type="text" class="User Name" name="phone" placeholder="{{ $langg->lang184 }}" required="">
@@ -1069,6 +1184,8 @@
 	<script src="{{asset('assets/front/js/setup.js')}}"></script>
 
 	<script src="{{asset('assets/front/js/toastr.js')}}"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 	<!-- main -->
 	<script src="{{asset('assets/front/js/main.js')}}"></script>
 	<!-- custom -->

@@ -169,7 +169,7 @@
 												</div>
 												<div class="col-lg-6">
 													<input class="form-control" type="text" name="zip"
-														placeholder="{{ $langg->lang159 }}" required=""
+														placeholder="{{ $langg->lang159 }}" 
 														value="{{ Auth::guard('web')->check() ? Auth::guard('web')->user()->zip : '' }}">
 												</div>
 											</div>
@@ -504,6 +504,25 @@
 															</a>
 
 															@endif
+															@if($gs->payu_check == 1)
+															<a class="nav-link payment" data-val="payu" data-show="no" data-form="{{route('payu.submit')}}" data-href="{{ route('front.load.payment',['slug1' => 'payu','slug2' => 0]) }}" id="v-pills-tab9-tab" data-toggle="pill" href="#v-pills-tab9" role="tab" aria-controls="v-pills-tab9" aria-selected="false">
+																	<div class="icon">
+																			<span class="radio"></span>
+																	</div>
+																	<p>
+																			{{ $langg->lang822 }}
+
+																		@if($gs->payu_text != null)
+
+																		<small>
+																				{{ $gs->payu_text }}
+																		</small>
+
+																		@endif
+																	</p>
+															</a>
+
+															@endif
 
 
 @if($digital == 0)
@@ -574,6 +593,17 @@
 																<div class="tab-pane fade" id="v-pills-tab8" role="tabpanel" aria-labelledby="v-pills-tab8-tab">
 																</div>
 															@endif
+															@if($gs->payu_check == 1)
+																<div class="tab-pane fade" id="v-pills-tab9" role="tabpanel" aria-labelledby="v-pills-tab9-tab">
+																</div>
+
+																@php
+																	$referenceCode = \Helper::buildReferenceCodePayU();
+																	$description = \Helper::buildDescriptionPayU($products);
+																@endphp
+																<input name="description"   type="hidden"  value="{{$description}}"  >
+																<input name="referenceCode" type="hidden"  value="{{$referenceCode}}" >
+															@endif
 
 													@if($digital == 0)
 														@foreach($gateways as $gt)
@@ -610,7 +640,8 @@
                             <input type="hidden" id="shipping-cost" name="shipping_cost" value="0">
                             <input type="hidden" id="packing-cost" name="packing_cost" value="0">
                             <input type="hidden" name="dp" value="{{$digital}}">
-                            <input type="hidden" name="tax" value="{{$gs->tax}}">
+							<input type="hidden" name="tax" value="{{$gs->tax}}">
+
                             <input type="hidden" name="totalQty" value="{{$totalQty}}">
 
                             <input type="hidden" name="vendor_shipping_id" value="{{ $vendor_shipping_id }}">

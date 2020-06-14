@@ -52,6 +52,27 @@
                     </div>
                   </div>
 
+                  <div class="form-group">
+                    <select name="product_country_id" id="countries" onchange="categoryOptionsFilters('cities',this.value)" class="form-control">
+                      <option value=""> {{ $langg->lang157 }} </option>
+                      @foreach ($countries_prod as $item)
+                          <option value="{{$item->id}}">{{$item->country_name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <select name="product_city_id" id="cities" onchange="categoryOptionsFilters('neighborhoods',this.value)" class="form-control">
+                      <option value=""> {{ $langg->lang813 }} </option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <select name="neighborhood_id" id="neighborhoods" class="form-control">
+                      <option value="">{{ $langg->lang814 }}</option>
+                    </select>
+                  </div>
+
                   <button class="filter-btn" type="submit">{{$langg->lang58}}</button>
               </form>
             </div>
@@ -183,14 +204,14 @@
               @if($vendor->f_check != 0)
               <li><a href="{{$vendor->f_url}}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
               @endif
-              @if($vendor->g_check != 0)
-              <li><a href="{{$vendor->g_url}}" target="_blank"><i class="fab fa-google"></i></a></li>
+              @if($vendor->i_check != 0)
+              <li><a href="{{$vendor->i_url}}" target="_blank"><i class="fab fa-google"></i></a></li>
               @endif
               @if($vendor->t_check != 0)
               <li><a href="{{$vendor->t_url}}" target="_blank"><i class="fab fa-twitter"></i></a></li>
               @endif
-              @if($vendor->l_check != 0)
-              <li><a href="{{$vendor->l_url}}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+              @if($vendor->w_check != 0)
+              <li><a href="{{$vendor->w_url}}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
               @endif
 
 

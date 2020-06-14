@@ -36,6 +36,10 @@ $(function ($) {
         $(this).addClass('active');
         $('.categories_menu_inner').stop().slideDown('medium');
     }); 
+    $(".countries_title").on("mouseover", function() {
+        $(this).addClass('active');
+        $('.countries_menu_inner').stop().slideDown('medium');
+    }); 
 
 
         /*------addClass/removeClass categories-------*/
@@ -43,12 +47,17 @@ $(function ($) {
             $(this).find('.link-area a').toggleClass('open').parent().parent().find('.categories_mega_menu, categorie_sub').addClass('open');
             $(this).siblings().find('.categories_mega_menu, .categorie_sub').removeClass('open');
         });
+        $(".countries_menu_inner > ul > li").on("mouseover", function() {
+            $(this).find('.link-area a').toggleClass('open').parent().parent().find('.countries_mega_menu, categorie_sub').addClass('open');
+            $(this).siblings().find('.countries_mega_menu, .categorie_sub').removeClass('open');
+        });
 
 
 
   $(document).on('mouseover', function(e) 
   {
       var container = $(".categories_menu_inner, .categories_mega_menu, .categories_title");
+      var container_2 = $(".countries_menu_inner, .countries_mega_menu, .countries_title");
 
       // if the target of the click isn't the container nor a descendant of the container
       if (!container.is(e.target) && container.has(e.target).length === 0) 
@@ -57,6 +66,13 @@ $(function ($) {
         $('.categories_mega_menu, .categorie_sub').removeClass('open');
          $(".categories_mega_menu").removeClass('open');
          $(".categories_title").removeClass('active');
+      }
+      if (!container_2.is(e.target) && container_2.has(e.target).length === 0) 
+      {
+        $('.countries_menu_inner').stop().slideUp('medium');
+        $('.countries_mega_menu, .categorie_sub').removeClass('open');
+         $(".countries_mega_menu").removeClass('open');
+         $(".countries_title").removeClass('active');
       }
 
 
@@ -80,11 +96,19 @@ $(function ($) {
         $(this).toggleClass('active');
         $('.categories_menu_inner').stop().slideToggle('medium');
     }); 
+    $(".countries_title").on("click", function() {
+        $(this).toggleClass('active');
+        $('.countries_menu_inner').stop().slideToggle('medium');
+    }); 
 
         /*------addClass/removeClass categories-------*/
         $(".categories_menu_inner > ul > li").on("click", function() {
             $(this).find('.link-area a').toggleClass('open').parent().parent().find('.categories_mega_menu, categorie_sub').toggleClass('open');
             $(this).siblings().find('.categories_mega_menu, .categorie_sub').removeClass('open');
+        });
+        $(".countries_menu_inner > ul > li").on("click", function() {
+            $(this).find('.link-area a').toggleClass('open').parent().parent().find('.countries_mega_menu, countries_sub').toggleClass('open');
+            $(this).siblings().find('.countries_mega_menu, .countries_sub').removeClass('open');
         });
 
 
@@ -92,6 +116,7 @@ $(function ($) {
   $(document).on('click', function(e) 
   {
       var container = $(".categories_menu_inner, .categories_mega_menu, .categories_title");
+      var container_2 = $(".countries_menu_inner, .countries_mega_menu, .countries_title");
 
       // if the target of the click isn't the container nor a descendant of the container
       if (!container.is(e.target) && container.has(e.target).length === 0) 
@@ -101,6 +126,13 @@ $(function ($) {
          $(".categories_mega_menu").removeClass('open');
          $(".categories_title").removeClass('active');
       }
+      if (!container_2.is(e.target) && container_2.has(e.target).length === 0) 
+      {
+        $('.countries_menu_inner').stop().slideUp('medium');
+        $('.countries_mega_menu, .countries_sub').removeClass('open');
+         $(".countries_mega_menu").removeClass('open');
+         $(".countries_title").removeClass('active');
+      }
   });
 
 $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").on('click',function(){
@@ -108,6 +140,14 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").on('click',fu
 });
 
 $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function(){
+    $(this).html('<i class="fas fa-plus"></i>');
+});
+
+$(".countries_menu_inner > ul > li.dropdown_list .link-area > a").on('click',function(){
+        $(this).find('i').toggleClass('fa-plus').toggleClass('fa-minus');
+});
+
+$(".countries_menu_inner > ul > li.dropdown_list .link-area > a").each(function(){
     $(this).html('<i class="fas fa-plus"></i>');
 });
 

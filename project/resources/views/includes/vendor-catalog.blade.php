@@ -179,14 +179,14 @@
               @if($vendor->f_check != 0)
               <li><a href="{{$vendor->f_url}}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
               @endif
-              @if($vendor->g_check != 0)
-              <li><a href="{{$vendor->g_url}}" target="_blank"><i class="fab fa-google"></i></a></li>
+              @if($vendor->i_check != 0)
+              <li><a href="{{$vendor->i_url}}" target="_blank"><i class="fab fa-instagram"></i></a></li>
               @endif
               @if($vendor->t_check != 0)
               <li><a href="{{$vendor->t_url}}" target="_blank"><i class="fab fa-twitter"></i></a></li>
               @endif
-              @if($vendor->l_check != 0)
-              <li><a href="{{$vendor->l_url}}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+              @if($vendor->w_check != 0)
+              <li><a href="{{$vendor->w_url}}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
               @endif
 
 

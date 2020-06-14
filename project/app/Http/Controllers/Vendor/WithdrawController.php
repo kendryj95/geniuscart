@@ -38,14 +38,14 @@ class WithdrawController extends Controller
         $from = User::findOrFail(Auth::guard('web')->user()->id);
         $curr = Currency::where('is_default','=',1)->first(); 
         $withdrawcharge = Generalsetting::findOrFail(1);
-        $charge = $withdrawcharge->withdraw_fee;
+        $charge = $withdrawcharge->withdraw_fee_vendor;
 
         if($request->amount > 0){
 
             $amount = $request->amount;
             $amount = round(($amount / $curr->value),2);
             if ($from->current_balance >= $amount){
-                $fee = (($withdrawcharge->withdraw_charge / 100) * $amount) + $charge;
+                $fee = (($withdrawcharge->withdraw_charge_vendor / 100) * $amount) + $charge;
                 $finalamount = $amount - $fee;
                 $finalamount = number_format((float)$finalamount,2,'.','');
 

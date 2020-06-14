@@ -111,6 +111,40 @@
 											</select>
 										</div>
 									</div>
+
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="left-area">
+												<h4 class="heading">{{ $langg->lang816 }}</h4>
+												<p class="sub-heading">{{ $langg->lang668}}</p>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<select id="product_country_id" name="product_country_id">
+												<option value="">{{ $langg->lang157 }}</option>
+												@foreach ($countries as $item)
+													<option value="{{$item->id}}">{{$item->country_name}}</option>
+												@endforeach
+											</select>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="left-area">
+												<h4 class="heading">{{ $langg->lang817 }}</h4>
+												<p class="sub-heading">{{ $langg->lang668}}</p>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<select id="product_city_id" name="product_city_id">
+												<option value="">{{ $langg->lang813 }}</option>
+												@foreach ($cities as $item)
+													<option value="{{$item->id}}">{{$item->city_name}}</option>
+											  	@endforeach
+											</select>
+										</div>
+									</div>
 		
 									<div class="row">
 										<div class="col-lg-12">

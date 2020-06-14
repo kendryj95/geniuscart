@@ -326,9 +326,18 @@
                             <input type="text" class="input-field" name="lang15" placeholder="See All Categories" required="" value="See All Categories">
                           </div>
                         </div>
-
-
-
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">See All Countries *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang819" placeholder="See All Countries" required="" value="{{ $lang->lang819 }}">
+                          </div>
+                        </div>
 
                         <div class="row">
                           <div class="col-lg-4">
@@ -2351,6 +2360,18 @@
                             <input type="text" class="input-field" name="lang156" placeholder="Country" required="" value="{{ $lang->lang156 }}">
                           </div>
                         </div>
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Countries *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang818" placeholder="Countries" required="" value="{{ $lang->lang818 }}">
+                          </div>
+                        </div>
 
                         <div class="row">
                           <div class="col-lg-4">
@@ -2363,6 +2384,18 @@
                             <input type="text" class="input-field" name="lang157" placeholder="Select Country" required="" value="{{ $lang->lang157 }}">
                           </div>
                         </div>
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Product Country *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang816" placeholder="Product Country" required="" value="{{ $lang->lang816 }}">
+                          </div>
+                        </div>
 
                         <div class="row">
                           <div class="col-lg-4">
@@ -2373,6 +2406,54 @@
                           </div>
                           <div class="col-lg-7">
                             <input type="text" class="input-field" name="lang158" placeholder="City" required="" value="{{ $lang->lang158 }}">
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Select City *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang813" placeholder="Select City" required="" value="{{ $lang->lang813 }}">
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Product City *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang817" placeholder="Product City" required="" value="{{ $lang->lang817 }}">
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Neighborhood *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang815" placeholder="Neighborhood" required="" value="{{ $lang->lang815 }}">
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Select Neighborhood *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang814" placeholder="Select Neighborhood" required="" value="{{ $lang->lang814 }}">
                           </div>
                         </div>
 
@@ -5009,6 +5090,18 @@
                         </div>
 
 
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">PayU *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang822" placeholder="PayU" required="" value="{{ $lang->lang822 }}">
+                          </div>
+                        </div>
+                        
                         <div class="row">
                           <div class="col-lg-4">
                             <div class="left-area">
@@ -10694,6 +10787,30 @@
                           </div>
                           <div class="col-lg-7">
                             <input type="text" class="input-field" name="lang526" placeholder="Facebook " required="" value="{{ $lang->lang526 }}">
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Instagram  *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang820" placeholder="Instagram " required="" value="{{ $lang->lang820 }}">
+                          </div>
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                                <h4 class="heading">Whatsapp  *</h4>
+                                <p class="sub-heading">(In Any Language)</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <input type="text" class="input-field" name="lang821" placeholder="Whatsapp " required="" value="{{ $lang->lang821 }}">
                           </div>
                         </div>
 

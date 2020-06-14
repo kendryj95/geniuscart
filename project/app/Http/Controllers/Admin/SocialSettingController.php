@@ -52,14 +52,14 @@ class SocialSettingController extends Controller
         if ($request->t_status == ""){
             $input['t_status'] = 0;
         }
-        if ($request->g_status == ""){
-            $input['g_status'] = 0;
+        if ($request->i_status == ""){
+            $input['i_status'] = 0;
         }
         if ($request->l_status == ""){
             $input['l_status'] = 0;
         }
-        if ($request->d_status == ""){
-            $input['d_status'] = 0;
+        if ($request->w_status == ""){
+            $input['w_status'] = 0;
         }
         $data->update($input);
         //--- Logic Section Ends

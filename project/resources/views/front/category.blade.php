@@ -81,6 +81,34 @@
     });
   });
 
+  function categoryOptionsFilters(type, id) {
+    var option1 = type == "cities" ? langg.lang813 : langg.lang814;
+    var html = '<option value="">'+option1+'</option>';
+    var opt = type == "cities" ? "city_name" : "name";
+
+    if (id != "") {
+      $.ajax({
+        url: `${mainurl}/category/filters/options/${type}/${id}`,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+          if (data) {
+            var options = data.options;
+            
+            for (const item of options) {
+              html += `<option value="${item.id}">${item[opt]}</option>`;
+            }
+            
+            $(`#${type}`).html(html);
+
+          }
+        }
+      })
+    } else {
+      $(`#${type}`).html(html);
+    }
+  }
+
   function filter() {
     let filterlink = '';
 
@@ -125,6 +153,30 @@
         filterlink += '&'+$("#max_price").attr('name')+'='+$("#max_price").val();
       }
     }
+    
+    if ($("#countries").val() != '') {
+      if (filterlink == '') {
+        filterlink += '{{route('front.category', [Request::route('category'), Request::route('subcategory'), Request::route('childcategory')])}}' + '?'+$("#countries").attr('name')+'='+$("#countries").val();
+      } else {
+        filterlink += '&'+$("#countries").attr('name')+'='+$("#countries").val();
+      }
+    }
+    
+    if ($("#cities").val() != '') {
+      if (filterlink == '') {
+        filterlink += '{{route('front.category', [Request::route('category'), Request::route('subcategory'), Request::route('childcategory')])}}' + '?'+$("#cities").attr('name')+'='+$("#cities").val();
+      } else {
+        filterlink += '&'+$("#cities").attr('name')+'='+$("#cities").val();
+      }
+    }
+    
+    if ($("#neighborhoods").val() != '') {
+      if (filterlink == '') {
+        filterlink += '{{route('front.category', [Request::route('category'), Request::route('subcategory'), Request::route('childcategory')])}}' + '?'+$("#neighborhoods").attr('name')+'='+$("#neighborhoods").val();
+      } else {
+        filterlink += '&'+$("#neighborhoods").attr('name')+'='+$("#neighborhoods").val();
+      }
+    }
 
     // console.log(filterlink);
     console.log(encodeURI(filterlink));
@@ -163,6 +215,18 @@
 
       if ($("#max_price").val() != '') {
         fullUrl += '&max='+encodeURI($("#max_price").val());
+      }
+      
+      if ($("#countries").val() != '') {
+        fullUrl += '&product_country_id='+encodeURI($("#countries").val());
+      }
+      
+      if ($("#cities").val() != '') {
+        fullUrl += '&product_city_id='+encodeURI($("#cities").val());
+      }
+      
+      if ($("#neighborhoods").val() != '') {
+        fullUrl += '&neighborhood_id='+encodeURI($("#neighborhoods").val());
       }
 
       $(this).attr('href', fullUrl);

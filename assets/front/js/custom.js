@@ -1449,9 +1449,65 @@ $('#track-form').on('submit',function(e){
 
 // TRACK ORDER ENDS
 
+$('#select-city-layout').on('change', function(event){
+  var id_city = $(this).val();
+  if (id_city != '') {
+    $('#select-neighborhood-layout').prop('disabled',true);
+    $.ajax({
+      url: `${mainurl}/neighborhood/city`,
+      type: "GET",
+      data:{id_city:id_city},
+      dataType: "json",
+      success: function(data) {
+        var html = '<option value="">'+langg.lang814+'</option>';
+        for (const value of data) {
+          html += `<option value="${value.id}">${value.name}</option>`;
+        }
+        $('#select-neighborhood-layout').prop('disabled',false).html(html);
+        $('.selectpicker').selectpicker('refresh');
+      }
+    })
+  } else {
+    var html = '<option value="">'+langg.lang814+'</option>';
+    
+    $('#select-neighborhood-layout').html(html);
+    $('.selectpicker').selectpicker('refresh');
+
+  }
+  
+})
+
+$('#select-city-subs').on('change', function(event){
+  var id_city = $(this).val();
+  if (id_city != '') {
+    $('#select-neighborhood-subs').prop('disabled',true);
+    $.ajax({
+      url: `${mainurl}/neighborhood/city`,
+      type: "GET",
+      data:{id_city:id_city},
+      dataType: "json",
+      success: function(data) {
+        var html = '<option value="">'+langg.lang814+'</option>';
+        for (const value of data) {
+          html += `<option value="${value.id}">${value.name}</option>`;
+        }
+        $('#select-neighborhood-subs').prop('disabled',false).html(html);
+        $('.selectpicker').selectpicker('refresh');
+
+      }
+    })
+  } else {
+    var html = '<option value="">'+langg.lang814+'</option>';
+    
+    $('#select-neighborhood-subs').html(html);
+        $('.selectpicker').selectpicker('refresh');
+
+  }
+  
+})
+
+
 });
-
-
 
 
 

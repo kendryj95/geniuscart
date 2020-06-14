@@ -357,6 +357,18 @@
                         </div>
                       </div>
 
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
+                              <h4 class="heading">See All Countries *</h4>
+                              <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang819" placeholder="See All Countries" required="" value="See All Countries">
+                        </div>
+                      </div>
+
 
 
 
@@ -2528,6 +2540,18 @@
                       <div class="row">
                         <div class="col-lg-4">
                           <div class="left-area">
+                              <h4 class="heading">Countries *</h4>
+                              <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang156" placeholder="Countries" required="" value="Countries">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
                             <h4 class="heading">Select Country *</h4>
                             <p class="sub-heading">(In Any Language)</p>
                           </div>
@@ -2541,6 +2565,18 @@
                       <div class="row">
                         <div class="col-lg-4">
                           <div class="left-area">
+                              <h4 class="heading">Product Country *</h4>
+                              <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang816" placeholder="Product Country" required="" value="Product Country">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
                             <h4 class="heading">City *</h4>
                             <p class="sub-heading">(In Any Language)</p>
                           </div>
@@ -2548,6 +2584,54 @@
                         <div class="col-lg-7">
                           <input type="text" class="input-field" name="lang158" placeholder="City" required=""
                             value="City">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
+                              <h4 class="heading">Select City *</h4>
+                              <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang813" placeholder="Select City" required="" value="Select City">
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
+                              <h4 class="heading">Product City *</h4>
+                              <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang817" placeholder="Product City" required="" value="Product City">
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
+                              <h4 class="heading">Neighborhood *</h4>
+                              <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang815" placeholder="Neighborhood" required="" value="Neighborhood">
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
+                              <h4 class="heading">Select Neighborhood *</h4>
+                              <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang814" placeholder="Select Neighborhood" required="" value="Select Neighborhood">
                         </div>
                       </div>
 
@@ -5383,6 +5467,19 @@
                       </div>
 
 
+                      <div class="row">
+                        <div class="col-lg-4">
+                          <div class="left-area">
+                            <h4 class="heading">PayU *</h4>
+                            <p class="sub-heading">(In Any Language)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-7">
+                          <input type="text" class="input-field" name="lang340" placeholder="PayU" required=""
+                            value="PayU">
+                        </div>
+                      </div>
+                      
                       <div class="row">
                         <div class="col-lg-4">
                           <div class="left-area">
@@ -11516,6 +11613,32 @@
                       <div class="col-lg-7">
                         <input type="text" class="input-field" name="lang526" placeholder="Facebook " required=""
                           value="Facebook ">
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="left-area">
+                          <h4 class="heading">Instagram *</h4>
+                          <p class="sub-heading">(In Any Language)</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-7">
+                        <input type="text" class="input-field" name="lang820" placeholder="Instagram " required=""
+                          value="Instagram ">
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="left-area">
+                          <h4 class="heading">Whatsapp *</h4>
+                          <p class="sub-heading">(In Any Language)</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-7">
+                        <input type="text" class="input-field" name="lang821" placeholder="Whatsapp " required=""
+                          value="Whatsapp ">
                       </div>
                     </div>
 

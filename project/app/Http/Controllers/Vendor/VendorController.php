@@ -91,12 +91,12 @@ class VendorController extends Controller
             $input['t_check'] = 0;
         }
 
-        if ($request->g_check == ""){
-            $input['g_check'] = 0;
+        if ($request->i_check == ""){
+            $input['i_check'] = 0;
         }
 
-        if ($request->l_check == ""){
-            $input['l_check'] = 0;
+        if ($request->w_check == ""){
+            $input['w_check'] = 0;
         }
         $data->update($input);
         //--- Logic Section Ends
@@ -111,7 +111,10 @@ class VendorController extends Controller
     public function profile()
     {
         $data = Auth::user();  
-        return view('vendor.profile',compact('data'));
+        $neighborhoods = [];
+        if ($data->city_id != "")
+            $neighborhoods = DB::table('neighborhoods')->where('city_id',$data->city_id)->orderBy('name','ASC')->get();
+        return view('vendor.profile',compact('data','neighborhoods'));
     }
 
     //*** GET Request
